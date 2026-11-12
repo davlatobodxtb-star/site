@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "Region": {
+      "title": "Region",
+      "description": "Область или город республиканского значения",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Название области"
+        }
+      },
+      "required": ["name"]
+    },
+    "District": {
+      "title": "District",
+      "description": "Район или туман с привязкой к области",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Название района"
+        },
+        "regionId": {
+          "type": "string",
+          "description": "ID области"
+        }
+      },
+      "required": ["name", "regionId"]
+    },
+    "Institution": {
+      "title": "Institution",
+      "description": "Школа или детский сад",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["school", "kindergarten"],
+          "description": "Тип учреждения"
+        },
+        "districtId": {
+          "type": "string",
+          "description": "ID района"
+        },
+        "number": {
+          "type": "string",
+          "description": "Номер учреждения"
+        },
+        "location": {
+          "type": "string",
+          "description": "Адрес учреждения"
+        },
+        "googleMapsUrl": {
+          "type": "string",
+          "description": "Ссылка на локацию в Google Maps"
+        },
+        "passportData": {
+          "type": "string",
+          "description": "Паспортные данные и описание"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL фотографии главного входа"
+        },
+        "studentsCount": {
+          "type": "number",
+          "description": "Количество учеников или воспитанников"
+        },
+        "teachersCount": {
+          "type": "number",
+          "description": "Количество учителей или воспитателей"
+        },
+        "computerClassesCount": {
+          "type": "number",
+          "description": "Количество компьютерных классов"
+        },
+        "computersCount": {
+          "type": "number",
+          "description": "Количество компьютеров"
+        },
+        "computersYear": {
+          "type": "number",
+          "description": "Год поставки компьютеров"
+        },
+        "computerClasses": {
+          "type": "array",
+          "description": "Индивидуальный учет компьютерных классов"
+        }
+      },
+      "required": ["type", "districtId", "number"]
+    }
+  },
+  "firestore": {
+    "/regions/{regionId}": {
+      "schema": "Region",
+      "description": "Коллекция областей"
+    },
+    "/districts/{districtId}": {
+      "schema": "District",
+      "description": "Коллекция районов"
+    },
+    "/institutions/{institutionId}": {
+      "schema": "Institution",
+      "description": "Коллекция школ и детских садов"
+    },
+    "/settings/{docId}": {
+      "schema": "object",
+      "description": "Настройки системы"
+    }
+  }
+}

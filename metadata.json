@@ -1,0 +1,8 @@
+{
+  "name": "Система учета школ и детских садов",
+  "description": "Веб-приложение для учета школ и детских садов по областям и районам на базе Firebase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

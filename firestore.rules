@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Области (Регионы)
+    match /regions/{regionId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Районы (Туманы)
+    match /districts/{districtId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Учреждения (Школы и Детские сады)
+    match /institutions/{institutionId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Настройки системы
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
